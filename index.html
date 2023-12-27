@@ -2,12 +2,34 @@
 <html>
 <title>UrAlert</title>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-
+<link rel="icon" type="image/x-icon" href="UA.png">
 <link rel="stylesheet" type="text/css" href="./style.css">
 <script type="module" src="./index.js"></script>
-
+<script>
+      function openNav() {
+        document.getElementById("side-bar").style.width = "250px";
+      }
+      
+      function closeNav() {
+        document.getElementById("side-bar").style.width = "0";
+      }
+      </script>
 <body>
-<h1>UrAlert</h1>
+<header class="header">
+      <nav class="navbar">
+            <a href="#" onclick="openNav()"> <img src="Menu.png" class="menu-img" width="50"></a>
+            <a href="#" class="active">Ur<span>Alert</span></a>
+      </nav>
+</header>
+
+<div id="side-bar" class="side-bar">
+      <a href="javascript:void(0)" class="closebtn"
+      onclick="closeNav()">&times;</a>
+      <a href="#">Sign Up</a>
+      <a href="#">Login</a>
+      <a href="#">Filter</a>
+</div>
+
 
 
 
@@ -17,7 +39,7 @@
 <div id="map"></div>
 
 <script
-      src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=initMap&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsqAZiS-53VlaC_i4fAWBgU4JDYP6Lwfs&callback=initMap&v=weekly"
       defer>
 </script>
 

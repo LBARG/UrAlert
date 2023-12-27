@@ -15,10 +15,10 @@ function initMap() {
     zoom: 18,
   });
   infoWindow = new google.maps.InfoWindow();
-
   const locationButton = document.createElement("button");
 
-  locationButton.textContent = "Pan to Current Location";
+  
+  locationButton.textContent = "Ir a tu ubicación";
   locationButton.classList.add("custom-map-control-button");
   map.controls[google.maps.ControlPosition.TOP_CENTER].push(
     locationButton
@@ -34,7 +34,7 @@ function initMap() {
           };
 
           infoWindow.setPosition(pos);
-          infoWindow.setContent("You Are Here");
+          infoWindow.setContent("Estas Aquí");
           infoWindow.open(map);
           map.setCenter(pos);
         },
