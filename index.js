@@ -17,7 +17,7 @@ function initMap() {
 
   infoWindow = new google.maps.InfoWindow();
   const locationButton = document.createElement("button");
-  drawPolygon();
+  riskLevel();
   
   locationButton.textContent = "Ir a tu ubicación";
   locationButton.classList.add("custom-map-control-button");
@@ -59,59 +59,158 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   );
   infoWindow.open(map);
 }
+//draw the polygon depending of the section where the user is.
+function drawPolygon(sect,color){
 
-function drawPolygon(){
   const polygon = [
-    {lat: 19.485263, lng: -99.136557}, ///esq sur izq
-          {lat: 19.484954, lng: -99.134699}, ///esq sur der
-          {lat: 19.487714, lng: -99.134112}, ///esq centro der
-          {lat: 19.486991, lng: -99.130812}, ///centro der
-      {lat: 19.494001, lng: -99.131534}, ///sup centro
-      {lat: 19.491293, lng: -99.135630}
+    { lat: 19.495688, lng: -99.138939 }, // 1
+    { lat: 19.494266, lng: -99.132884 }, // 2
+    { lat: 19.490670, lng: -99.133549 }, // 3
+    { lat: 19.492133, lng: -99.139716 } // 4
   ];
   // Construct the polygon.
+  if(sect==1)
+  {
   const section1 = new google.maps.Polygon({
     paths: polygon,
     strokeColor: "#FF0000",
     strokeOpacity: 0.8,
     strokeWeight: 2,
-    fillColor: "#FF0000",
+    fillColor: color,
     fillOpacity: 0.35,
   });
+  section1.setMap(map);
+}
 
-  const polygon2=[{lat: 19.486991, lng: -99.130812}, ///centro der
-  {lat: 19.483943, lng: -99.126536}, ///esq der inf
-  {lat: 19.487888, lng: -99.123247}, ///esq der sup
-  {lat: 19.494001, lng: -99.131534}, ///sup centro
-];
+  const polygon2=[
+    { lat: 19.494218, lng: -99.132867 }, //1
+    { lat: 19.493999, lng: -99.131514 },
+    { lat: 19.491723, lng: -99.128426 },
+    { lat: 19.489607, lng: -99.130146 },
+    { lat: 19.490745, lng: -99.133444 } //5
+  ];
 
+if(sect==2)
+{
 const section2 = new google.maps.Polygon({
   paths: polygon2,
   strokeColor: "#FF0000",
   strokeOpacity: 0.8,
   strokeWeight: 2,
-  fillColor: "#FF0000",
+  fillColor: color,
   fillOpacity: 0.35,
 });
+section2.setMap(map);
+}
 
 const polygon3 = [
-  {lat: 19.494001, lng: -99.131534}, ///sup centro
-  {lat: 19.495641, lng: -99.138995}, /// esq izq sup
-  {lat: 19.492106, lng: -99.139693}, /// esq izq inf
-  {lat: 19.491293, lng: -99.135630}
+  { lat: 19.491732, lng: -99.128410 },
+  { lat: 19.488323, lng: -99.123796 },
+  { lat: 19.487475, lng: -99.124470 },
+  { lat: 19.489610, lng: -99.130157 }
 ]
+
+if(sect==3)
+{
 const section3 = new google.maps.Polygon({
   paths: polygon3,
   strokeColor: "#FF0000",
   strokeOpacity: 0.8,
   strokeWeight: 2,
-  fillColor: "#FF0000",
+  fillColor: color,
   fillOpacity: 0.35,
 });
+section3.setMap(map);
+}
+const polygon4 = [
+  { lat: 19.488917, lng: -99.128591 },
+  { lat: 19.487395, lng: -99.124526 },
+  { lat: 19.484322, lng: -99.127099 },
+  { lat: 19.486658, lng: -99.130299 }
+]
 
-  section1.setMap(map);
-  section2.setMap(map);
-  section3.setMap(map);
+if(sect==4)
+{
+const section4 = new google.maps.Polygon({
+  paths: polygon4,
+  strokeColor: "#FF0000",
+  strokeOpacity: 0.8,
+  strokeWeight: 2,
+  fillColor: color,
+  fillOpacity: 0.35,
+});
+section4.setMap(map);
+}
+const polygon5 = [
+  { lat: 19.490654, lng: -99.133425 },
+  { lat: 19.488892, lng: -99.128613 },
+  { lat: 19.486895, lng: -99.130229 },
+  { lat: 19.487735, lng: -99.134018 }
+]
+
+if(sect==5)
+{
+const section5 = new google.maps.Polygon({
+  paths: polygon5,
+  strokeColor: "#FF0000",
+  strokeOpacity: 0.8,
+  strokeWeight: 2,
+  fillColor: color,
+  fillOpacity: 0.35,
+});
+section5.setMap(map);
+}
+const polygon6 = [
+  { lat: 19.491226, lng: -99.135597 },
+  { lat: 19.490754, lng: -99.133579 },
+  { lat: 19.484966, lng: -99.134635 },
+  { lat: 19.485347, lng: -99.136654 }
+]
+
+if(sect==6)
+{
+const section6 = new google.maps.Polygon({
+  paths: polygon6,
+  strokeColor: "#FF0000",
+  strokeOpacity: 0.8,
+  strokeWeight: 2,
+  fillColor: color,
+  fillOpacity: 0.35,
+});
+section6.setMap(map);
+}
+  
+}
+//set the color depending of de risk level
+function riskLevel()
+{
+  let factor = 1.5;
+  let sect = 6;
+  let color = "#000000";//default color black
+  let bajo = "#5D7837"; 
+  let medio = "#FFC012";
+  let alto = "#F32121";
+  let extremo = "#730909";
+  
+  if (factor <= 3.5){
+    if (factor <= 2.5){
+      if (factor <= 1.5){
+        color = bajo;
+      }
+      else{
+        color = medio;
+      }
+    }
+    else{
+       color = alto;
+    }  
+   }
+  else{
+    color = extremo;
+  }
+  drawPolygon(sect,color);
 }
 
+//funciton setSection(){}
+//function setFactor(){}
 window.initMap = initMap;
