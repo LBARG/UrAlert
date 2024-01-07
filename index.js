@@ -184,8 +184,8 @@ section6.setMap(map);
 //set the color depending of de risk level
 function riskLevel()
 {
-  let factor = 1.5;
-  let sect = 6;
+  let factor = 2.5;
+  let sect = 3;
   let color = "#000000";//default color black
   let bajo = "#5D7837"; 
   let medio = "#FFC012";
