@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+<head>
+<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
 <title>UrAlert</title>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <link rel="icon" type="image/x-icon" href="UA.png">
@@ -14,6 +16,7 @@
         document.getElementById("side-bar").style.width = "0";
       }
       </script>
+</head>
 <body>
 <header class="header">
       <nav class="navbar">
@@ -36,12 +39,14 @@
 <p id="demo"></p>
 <h3>My Google Maps Demo</h3>
 <!--The div element for the map -->
-<div id="map"></div>
+<div id="noboxmap"></div>
+<div id="map">
 
 <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsqAZiS-53VlaC_i4fAWBgU4JDYP6Lwfs&callback=initMap&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=YOURKEY&callback=initMap&v=weekly"
       defer>
 </script>
-
+</div>
+<div id="noboxmap"></div>
 </body>
 </html>
